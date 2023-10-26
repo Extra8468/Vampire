@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    PlayerBase player;
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        player = FindAnyObjectByType<PlayerBase>();
     }
 }
