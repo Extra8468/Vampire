@@ -69,6 +69,7 @@ public class PlayerBase : MonoBehaviour
     SpriteRenderer playerSR;
     CircleCollider2D getItem;
     Vector3 dir = Vector3.zero;
+    Camera cam;
 
     PlayerInputActions inputActions;
 
@@ -78,10 +79,12 @@ public class PlayerBase : MonoBehaviour
         getItem = GetComponent<CircleCollider2D>();
         playerAni = GetComponent<Animator>();
         playerSR = GetComponent<SpriteRenderer>();
+        cam = FindObjectOfType<Camera>();
     }
     private void Update()
     {
         transform.position += Time.deltaTime * speed * dir;
+        cam.transform.position = new Vector3(transform.position.x, transform.position.y, cam.transform.position.z);
     }
     private void OnEnable()
     {

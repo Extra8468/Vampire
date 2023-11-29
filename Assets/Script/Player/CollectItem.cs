@@ -8,14 +8,12 @@ public class CollectItem : MonoBehaviour
     float magnetStr = 10.0f;
     int magnetDir = 1;
     Transform playerTransform;
-    Rigidbody2D playerRb;
     Transform itemTransform;
     bool magnetZone;
 
     private void Awake()
     {
         playerTransform = transform;
-        playerRb = playerTransform.GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
@@ -25,6 +23,7 @@ public class CollectItem : MonoBehaviour
             Vector2 dirToPlayer = playerTransform.position - itemTransform.position;
             float distance = Vector2.Distance(playerTransform.position, itemTransform.position);
             float magnetDistanceStr = (magnetStr / distance) * magnet;
+
             Vector2 force = magnetDistanceStr * dirToPlayer.normalized * magnetDir;
             itemTransform.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Force);
         }
